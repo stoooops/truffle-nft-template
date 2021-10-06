@@ -17,5 +17,7 @@
     "url": "https://github.com/stoooops/nft-template/issues"
   },
   "homepage": "https://github.com/stoooops/nft-template#readme",
-  "dependencies": {}
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2"
+  }
 }
