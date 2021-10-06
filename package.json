@@ -1,0 +1,21 @@
+{
+  "name": "nft-template",
+  "version": "1.0.0",
+  "description": "Solidity NFT Template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stoooops/nft-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stoooops/nft-template/issues"
+  },
+  "homepage": "https://github.com/stoooops/nft-template#readme",
+  "dependencies": {}
+}
