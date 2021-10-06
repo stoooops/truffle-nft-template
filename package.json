@@ -19,5 +19,9 @@
   "homepage": "https://github.com/stoooops/nft-template#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^4.3.2"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
