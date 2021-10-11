@@ -12,3 +12,5 @@ install:
 compile:
 	truffle compile
 
+migrate_goerli:
+	truffle migrate --network goerli
