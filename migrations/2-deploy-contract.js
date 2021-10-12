@@ -1,5 +1,5 @@
-var ExampleNFT = artifacts.require("ExampleNFT");
+var MyNFT = artifacts.require("MyNFT");
 
 module.exports = function(deployer) {
-  deployer.deploy(ExampleNFT);
+  deployer.deploy(MyNFT, "https://ipfs.io/ipfs/foo/");
 };

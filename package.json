@@ -24,6 +24,7 @@
     "test": "test"
   },
   "devDependencies": {
-    "@truffle/hdwallet-provider": "^1.5.1"
+    "@truffle/hdwallet-provider": "^1.5.1",
+    "truffle-plugin-verify": "^0.5.15"
   }
 }

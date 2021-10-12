@@ -1,3 +1,6 @@
+
+CONTRACT_NAME=MyNFT
+
 all: compile
 
 setup:
@@ -14,3 +17,12 @@ compile:
 
 migrate_goerli:
 	truffle migrate --network goerli
+
+migrate_rinkeby:
+	truffle migrate --network rinkeby
+
+migrate_rinkeby_force:
+	truffle migrate --network rinkeby --reset
+	sleep 15
+	truffle run verify $(CONTRACT_NAME) --network rinkeby
+
