@@ -49,6 +49,8 @@ module.exports = {
     goerli: {
       provider: () => {
         return new HDWalletProvider(
+          'black pact timber staff crew response version shadow essay laptop ceiling deputy',
+          'http://192.168.1.130:8545',
         )
       },
       network_id: '5', // eslint-disable-line camelcase
@@ -80,12 +82,12 @@ module.exports = {
     rinkeby: {
       provider: () => {
         return new HDWalletProvider(
-          process.env.MNEMONIC,
-          'https://rinkeby.infura.io/v3/' + process.env.INFURA_API_KEY,
+          'black pact timber staff crew response version shadow essay laptop ceiling deputy',
+          'http://192.168.1.130:8545',
         )
       },
       network_id: 4, // eslint-disable-line camelcase
-      gas: 3000000,
+      gas: 4465030,
       gasPrice: 10000000000,
     },
     // Another network with more advanced options...
@@ -133,6 +135,15 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     },
+  },
+
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+
+
+  api_keys: {
+    etherscan: 'JRUIHH9ZC29DFPYTBBMJ2EEV8GD3URF1WF'
   },
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:

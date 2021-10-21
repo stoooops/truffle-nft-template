@@ -1,5 +1,5 @@
 
-CONTRACT_NAME=MyNFT
+CONTRACT_NAME=ColoredNumbers
 
 all: compile
 
