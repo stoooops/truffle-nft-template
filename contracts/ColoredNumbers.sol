@@ -141,18 +141,11 @@ contract ColoredNumbers is ERC721Enumerable, Ownable {
     uint256 private _price = 0.0001 ether;
     bool public _paused = false;
 
-    // withdraw addresses
-    // address t1 = 0x635aADe5f5b338C8e87eAF20A8B177F173ca806F;
-    //address t2 = 0x4748E5B0A78204C34E0FCecfE6Fc974DD55C1F8A;
+    mapping(uint256 => uint256) public mintedBlockNumber;
 
     constructor(string memory baseURI) ERC721("Colored Numbers", "COLORNUM")  {
         setBaseURI(baseURI);
     }
-
-    // modifier onlyWithdrawAddresses {
-    //     require(msg.sender == t1);
-    //     _;
-    // }
 
     function awardItem(uint256 num) public payable {
         uint256 supply = totalSupply();
@@ -163,6 +156,7 @@ contract ColoredNumbers is ERC721Enumerable, Ownable {
 
         for(uint256 i = 1; i <= num; i++) {
             _safeMint( msg.sender, supply + i );
+            mintedBlockNumber[supply + i] = block.number;
         }
     }
 
@@ -197,7 +191,11 @@ contract ColoredNumbers is ERC721Enumerable, Ownable {
          return address(this).balance;
      }
 
-    function formatTokenURI(uint256 tokenId, string memory imageURI) public pure returns (string memory) {
+    function seed(uint256 tokenId) public view returns (uint256) {
+        return uint256(keccak256(abi.encodePacked(blockhash(mintedBlockNumber[tokenId] - 1))));
+    }
+
+    function formatTokenURI(uint256 tokenId, uint256 tokenRandom, string memory imageURI) public pure returns (string memory) {
         return string(
             abi.encodePacked(
                 "data:application/json;base64,",
@@ -209,6 +207,7 @@ contract ColoredNumbers is ERC721Enumerable, Ownable {
                             ', "description": "Colored Numbers description"',
                             ', "attributes": ""',
                             ', "image": "', imageURI, '.png"',
+                            ', "seed": "',  tokenRandom.toString(), '"',
                             '}'
                         )
                     )
@@ -216,12 +215,13 @@ contract ColoredNumbers is ERC721Enumerable, Ownable {
             )
         );
     }
+
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
 
         string memory baseURI = _baseURI();
         string memory imageURI = string(abi.encodePacked(baseURI, tokenId.toString()));
-        return formatTokenURI(tokenId, imageURI);
+        return formatTokenURI(tokenId, seed(tokenId), imageURI);
     }
 
     function destroy() public onlyOwner {
