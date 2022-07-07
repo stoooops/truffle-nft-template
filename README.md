@@ -1,3 +1,6 @@
+# Deprecated
+This repository is deprecated.
+
 # nft-template
 Solidity NFT Template
 
